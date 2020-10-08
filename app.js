@@ -7,8 +7,39 @@ const result_p = document.querySelector(".result > p");
 const rock_div = document.getElementById("r");
 const paper_div = document.getElementById("p");
 const scissors_div = document.getElementById("s");
-var remaining_time = document.querySelector("#time");
+const remaining_time = document.getElementById("time");
+const start_btn = document.getElementById("start");
 
+window.onload = () => hideGameArea();
+
+function setTimer() {
+  var timeleft = 60;
+  var downloadTimer = setInterval(function () {
+    if (timeleft <= 0) {
+      clearInterval(downloadTimer);
+      remaining_time.innerHTML = "Finished";
+    } else {
+      remaining_time.innerHTML = timeleft + " seconds remaining";
+    }
+    timeleft -= 1;
+  }, 1000);
+}
+
+function startgame() {
+  showGameArea();
+  setTimer();
+  start_btn.style.display = "none";
+}
+
+function hideGameArea() {
+  var x = document.getElementById("gamearea");
+  x.style.display = "none";
+}
+
+function showGameArea() {
+  var x = document.getElementById("gamearea");
+  x.style.display = "block";
+}
 
 function getCompChoice() {
   const choices = ["r", "p", "s"];
@@ -74,20 +105,17 @@ function draw(user, comp) {
 }
 
 function game(userChoice) {
-
   const compChoice = getCompChoice();
   switch (userChoice + compChoice) {
     case "rs":
     case "pr":
     case "sp":
-
       win(userChoice, compChoice);
       break;
 
     case "rp":
     case "ps":
     case "sr":
-
       lose(userChoice, compChoice);
       break;
 
@@ -111,80 +139,41 @@ function main() {
 main();
 
 function finalResult() {
-  remaining_time.innerHTML = timeleft;
+  let timeleft = remaining_time.innerHTML;
   userScore_span.innerHTML = userScore;
   compScore_span.innerHTML = computerScore;
 
-  if (timeleft === '00:00' && userScore > computerScore) {
-
+  if (timeleft === "Finished" && userScore > computerScore) {
     Swal.fire({
       imageUrl: "/images/trophy.gif",
       imageHeight: 200,
       imageWidth: 200,
-      title: "congratulations!!!",
-      text: "you have won",
-      html:
-        'The scores is: ' +
-        userScore  +':'+
-        computerScore,
+      title: "Congratulations!!!",
+      html: "<b>You won: </b>The scores is: " + userScore + ":" + computerScore,
       timer: 10000,
       showConfirmButton: false,
     }).then(() => location.reload());
-
-  } else if (timeleft == '00:00' && computerScore > userScore) {
-
+  } else if (timeleft === "Finished" && userScore < computerScore) {
     Swal.fire({
       imageUrl: "/images/sorry.gif",
       imageHeight: 200,
       imageWidth: 200,
-      title: "sorry!",
-      text: "you have lost",
+      title: "Sorry!",
       html:
-        'The scores is: ' +
-        userScore + ':' +
-        computerScore,
+        "<b>You lose: </b>The scores is: " + userScore + ":" + computerScore,
       timer: 10000,
       showConfirmButton: false,
     }).then(() => location.reload());
-
+  } else if (timeleft === "Finished" && userScore == computerScore) {
+    Swal.fire({
+      imageUrl: "/images/sorry.gif",
+      imageHeight: 200,
+      imageWidth: 200,
+      title: "Welldone!",
+      html:
+        "<b>It's a draw: </b>The scores is: " + userScore + ":" + computerScore,
+      timer: 10000,
+      showConfirmButton: false,
+    }).then(() => location.reload());
   }
-}
-
-function startTimer(duration, display) {
-  var timer = duration, minutes, seconds;
-  setInterval(function () {
-    minutes = parseInt(timer / 60, 10);
-    seconds = parseInt(timer % 60, 10);
-
-    minutes = minutes < 10 ? "0" + minutes : minutes;
-    seconds = seconds < 10 ? "0" + seconds : seconds;
-
-    display.textContent = minutes + ":" + seconds;
-
-    if (--timer < 0) {
-      timer = duration;
-    }
-  }, 1000);
-}
-
-function setTimer() {
-  var twoMinutes = 60 * 1,
-    display = document.querySelector('#time');
-  startTimer(twoMinutes, display);
-}
-
-window.onload = function () {
-  hideGameArea();
-};
-function startgame() {
-  showGameArea();
-  setTimer();
-}
-function hideGameArea() {
-  var x = document.getElementById("gamearea");
-  x.style.display = "none"
-}
-function showGameArea() {
-  var x = document.getElementById("gamearea");
-  x.style.display = "block";
 }
