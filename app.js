@@ -1,5 +1,3 @@
-
-
 var userScore = 0;
 var computerScore = 0;
 const userScore_span = document.getElementById("user-score");
@@ -34,9 +32,10 @@ function win(user, comp) {
 
   result_p.innerHTML = `${convertToWord(
     user
-  )}${smallUWord} beats ${convertToWord(comp)}${smallCWord}. You win!"`;
+  )}${smallUWord} beats ${convertToWord(comp)}${smallCWord}. You win!`;
 
   user_div.classList.add("success-glow");
+
   setTimeout(() => user_div.classList.remove("success-glow"), 300);
 }
 
@@ -48,10 +47,13 @@ function lose(user, comp) {
   computerScore++;
   userScore_span.innerHTML = userScore;
   compScore_span.innerHTML = computerScore;
+
   result_p.innerHTML = `${convertToWord(
     user
-  )}${smallUWord} loses to ${convertToWord(comp)}${smallCWord}. You lost!"`;
+  )}${smallUWord} loses to ${convertToWord(comp)}${smallCWord}. You lost!`;
+
   user_div.classList.add("danger-glow");
+
   setTimeout(() => user_div.classList.remove("danger-glow"), 300);
 }
 
@@ -65,10 +67,12 @@ function draw(user, comp) {
   )}${smallUWord} equals ${convertToWord(comp)}${smallCWord}. It's a draw!"`;
 
   user_div.classList.add("draw-glow");
+
   setTimeout(() => user_div.classList.remove("draw-glow"), 300);
 }
 
 function game(userChoice) {
+
   const compChoice = getCompChoice();
   switch (userChoice + compChoice) {
     case "rs":
@@ -77,18 +81,19 @@ function game(userChoice) {
 
       win(userChoice, compChoice);
       break;
+
     case "rp":
     case "ps":
     case "sr":
 
       lose(userChoice, compChoice);
       break;
+
     case "rr":
     case "pp":
     case "ss":
       draw(userChoice, compChoice);
       break;
-
   }
   finalResult();
 }
@@ -106,36 +111,30 @@ main();
 function finalResult() {
   userScore_span.innerHTML = userScore;
   compScore_span.innerHTML = computerScore;
+
   if (userScore == 10 && computerScore < 10) {
+
     Swal.fire({
-      imageUrl: "/images/trophy.jpg",
-      imageHeight: 100,
-      imageWidth: 100,
+      imageUrl: "/images/trophy.gif",
+      imageHeight: 200,
+      imageWidth: 200,
       title: "congratulations!!!",
       text: "you have won",
-      // icon: 'success',
-      timer: 100000,
+      timer: 10000,
       showConfirmButton: false,
-    });
+    }).then(() => location.reload());
 
-    window.setTimeout(function () {
-      location.reload();
-    }, 3000)
+  } else if (computerScore == 10 && userScore < 10) {
 
-  }
-  else if (computerScore == 10 && userScore < 10) {
     Swal.fire({
-      imageUrl: "/images/failure.jpg",
-      imageHeight: 100,
-      imageWidth: 100,
+      imageUrl: "/images/sorry.gif",
+      imageHeight: 200,
+      imageWidth: 200,
       title: "sorry!",
       text: "you have lost",
-      timer: 100000,
+      timer: 10000,
       showConfirmButton: false,
-    });
-    window.setTimeout(function () {
-      location.reload();
-    }, 3000)
-  }
+    }).then(() => location.reload());
 
+  }
 }
