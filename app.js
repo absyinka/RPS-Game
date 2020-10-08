@@ -107,26 +107,37 @@ function finalResult() {
   userScore_span.innerHTML = userScore;
   compScore_span.innerHTML = computerScore;
   if (userScore == 10 && computerScore < 10) {
-    SweetAlert(
+    Swal.fire({
+      imageUrl: "/images/trophy.jpg",
+      imageHeight: 100,
+      imageWidth: 100,
+      title: "congratulations!!!",
+      text: "you have won",
+      // icon: 'success',
+      timer: 100000,
+      showConfirmButton: false,
+    });
 
-      "congratulations!!!",
-      "you have won",
-      'success',
-    );
     window.setTimeout(function () {
       location.reload();
     }, 3000)
 
   }
   else if (computerScore == 10 && userScore < 10) {
-    SweetAlert(
-      "sorry!",
-      "you have lost",
-      'error'
-    );
+    Swal.fire({
+      imageUrl: "/images/failure.jpg",
+      imageHeight: 100,
+      imageWidth: 100,
+      title: "sorry!",
+      text: "you have lost",
+      timer: 100000,
+      showConfirmButton: false,
+    });
+
     window.setTimeout(function () {
       location.reload();
     }, 3000)
+
   }
 
 }
