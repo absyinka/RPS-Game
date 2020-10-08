@@ -8,6 +8,7 @@ const rock_div = document.getElementById("r");
 const paper_div = document.getElementById("p");
 const scissors_div = document.getElementById("s");
 
+
 function getCompChoice() {
   const choices = ["r", "p", "s"];
   const randomNo = Math.floor(Math.random() * 3);
@@ -120,6 +121,10 @@ function finalResult() {
       imageWidth: 200,
       title: "congratulations!!!",
       text: "you have won",
+      html:
+        'The scores is: ' +
+        userScore  +':'+
+        computerScore,
       timer: 10000,
       showConfirmButton: false,
     }).then(() => location.reload());
@@ -132,9 +137,14 @@ function finalResult() {
       imageWidth: 200,
       title: "sorry!",
       text: "you have lost",
+      html:
+        'The scores is: ' +
+        userScore + ':' +
+        computerScore,
       timer: 10000,
       showConfirmButton: false,
     }).then(() => location.reload());
 
   }
 }
+
