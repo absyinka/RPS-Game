@@ -72,7 +72,7 @@ function draw(user, comp) {
 
   result_p.innerHTML = `${convertToWord(
     user
-  )}${smallUWord} equals ${convertToWord(comp)}${smallCWord}. It's a draw!"`;
+  )}${smallUWord} equals ${convertToWord(comp)}${smallCWord}. It's a draw!`;
 
   user_div.classList.add("draw-glow");
 
