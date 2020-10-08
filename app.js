@@ -133,11 +133,9 @@ function finalResult() {
       timer: 100000,
       showConfirmButton: false,
     });
-
     window.setTimeout(function () {
       location.reload();
     }, 3000)
-
   }
 
 }
