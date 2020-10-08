@@ -55,7 +55,6 @@ header>h1 {
 }
 
 .clock {
-    /* margin: 15px; */
     margin-left: 1000px;
     border: 3px solid red;
     border-radius: 4px;

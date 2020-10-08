@@ -166,7 +166,7 @@ function finalResult() {
     }).then(() => location.reload());
   } else if (timeleft === "Finished" && userScore == computerScore) {
     Swal.fire({
-      imageUrl: "/images/sorry.gif",
+      imageUrl: "/images/thumbs.gif",
       imageHeight: 200,
       imageWidth: 200,
       title: "Welldone!",
