@@ -12,32 +12,41 @@
   <header>
     <h1>Rock Paper Scissors</h1>
   </header>
+  <div id="gamearea">
+    <div id="time" class="clock">05:00</div>
 
-  <div class="scoreboard">
-    <div class="badge" id="user">user</div>
-    <div class="badge" id="comp">comp</div>
-    <span id="user-score">0</span>:<span id="comp-score">0</span>
-  </div>
-
-  <div class="result">
-    <p>Paper beats Rock! You Win!</p>
-  </div>
-
-  <div class="choices">
-    <div class="choice" id="r">
-      <img src="images/rock.jpg" alt="" />
+    <div class="scoreboard">
+      <div class="badge" id="user">user</div>
+      <div class="badge" id="comp">comp</div>
+      <span id="user-score">0</span>:<span id="comp-score">0</span>
     </div>
 
-    <div class="choice" id="p">
-      <img src="images/paper.jpg" alt="" />
+    <div class="result">
+      <p>Paper beats Rock! You Win!</p>
     </div>
 
-    <div class="choice" id="s">
-      <img src="images/scissors.jpg" alt="" />
+    <div class="choices">
+      <div class="choice" id="r">
+        <img src="images/rock.jpg" alt="" />
+      </div>
+
+      <div class="choice" id="p">
+        <img src="images/paper.jpg" alt="" />
+      </div>
+
+      <div class="choice" id="s">
+        <img src="images/scissors.jpg" alt="" />
+      </div>
     </div>
+
+    <p id="action">Make your move</p>
   </div>
 
-  <p id="action">Make your move</p>
+  <button onclick="startgame()" id="start">PLAY</button>
+
+
+
+
 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
   <script src="app.js"></script>
