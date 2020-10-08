@@ -8,6 +8,13 @@ const rock_div = document.getElementById("r");
 const paper_div = document.getElementById("p");
 const scissors_div = document.getElementById("s");
 
+var user_span = document.getElementById("user");
+var userName_span = document.getElementById("userName").innerHTML;
+
+function changeName() {
+  user_span.innerHTML = userName_span.innerText;
+}
+
 
 function getCompChoice() {
   const choices = ["r", "p", "s"];
@@ -148,3 +155,16 @@ function finalResult() {
   }
 }
 
+
+
+
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("start");
+
+// When the user clicks on the button, open the modal
+btn.onclick = function () {
+  modal.style.display = "block";
+}

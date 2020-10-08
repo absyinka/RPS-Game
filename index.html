@@ -13,6 +13,11 @@
     <h1>Rock Paper Scissors</h1>
   </header>
 
+  <!-- Start The Game -->
+  <div class="startBtn">
+    <button class="start" id="start">Start</button>
+  </div>
+
   <div class="scoreboard">
     <div class="badge" id="user">user</div>
     <div class="badge" id="comp">comp</div>
@@ -39,6 +44,20 @@
 
   <p id="action">Make your move</p>
 
+
+  <!-- The Modal -->
+  <div id="myModal" class="modal">
+  
+    <!-- Modal content -->
+    <div class="modal-content">
+      <form>
+        <label>Enter Your Name</label>
+        <input type="text" id="userName" name="userName" required>
+        <button type="submit" onclick="changeName()" name="submit" id="submit">Submit</button>
+      </form>
+    </div>
+  
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
   <script src="app.js"></script>
