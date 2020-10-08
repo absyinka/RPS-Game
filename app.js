@@ -9,6 +9,7 @@ const paper_div = document.getElementById("p");
 const scissors_div = document.getElementById("s");
 var remaining_time = document.querySelector("#time");
 
+
 function getCompChoice() {
   const choices = ["r", "p", "s"];
   const randomNo = Math.floor(Math.random() * 3);
@@ -65,7 +66,7 @@ function draw(user, comp) {
 
   result_p.innerHTML = `${convertToWord(
     user
-  )}${smallUWord} equals ${convertToWord(comp)}${smallCWord}. It's a draw!"`;
+  )}${smallUWord} equals ${convertToWord(comp)}${smallCWord}. It's a draw!`;
 
   user_div.classList.add("draw-glow");
 
@@ -122,6 +123,10 @@ function finalResult() {
       imageWidth: 200,
       title: "congratulations!!!",
       text: "you have won",
+      html:
+        'The scores is: ' +
+        userScore  +':'+
+        computerScore,
       timer: 10000,
       showConfirmButton: false,
     }).then(() => location.reload());
@@ -134,13 +139,16 @@ function finalResult() {
       imageWidth: 200,
       title: "sorry!",
       text: "you have lost",
+      html:
+        'The scores is: ' +
+        userScore + ':' +
+        computerScore,
       timer: 10000,
       showConfirmButton: false,
     }).then(() => location.reload());
 
   }
 }
-
 
 function startTimer(duration, display) {
   var timer = duration, minutes, seconds;
@@ -180,10 +188,3 @@ function showGameArea() {
   var x = document.getElementById("gamearea");
   x.style.display = "block";
 }
-
-
-
-
-
-
-
