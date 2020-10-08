@@ -13,7 +13,7 @@ const scissors_div = document.getElementById("s");
 function getCompChoice() {
   const choices = ["r", "p", "s"];
   const randomNo = Math.floor(Math.random() * 3);
-  console.log(randomNo);
+
   return choices[randomNo];
 }
 
