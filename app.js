@@ -1,3 +1,5 @@
+
+
 var userScore = 0;
 var computerScore = 0;
 const userScore_span = document.getElementById("user-score");
@@ -11,6 +13,7 @@ const scissors_div = document.getElementById("s");
 function getCompChoice() {
   const choices = ["r", "p", "s"];
   const randomNo = Math.floor(Math.random() * 3);
+
   return choices[randomNo];
 }
 
@@ -71,11 +74,13 @@ function game(userChoice) {
     case "rs":
     case "pr":
     case "sp":
+
       win(userChoice, compChoice);
       break;
     case "rp":
     case "ps":
     case "sr":
+
       lose(userChoice, compChoice);
       break;
     case "rr":
@@ -83,7 +88,9 @@ function game(userChoice) {
     case "ss":
       draw(userChoice, compChoice);
       break;
+
   }
+  finalResult();
 }
 
 function main() {
@@ -95,3 +102,40 @@ function main() {
 }
 
 main();
+
+function finalResult() {
+  userScore_span.innerHTML = userScore;
+  compScore_span.innerHTML = computerScore;
+  if (userScore == 10 && computerScore < 10) {
+    Swal.fire({
+      imageUrl: "/images/trophy.jpg",
+      imageHeight: 100,
+      imageWidth: 100,
+      title: "congratulations!!!",
+      text: "you have won",
+      // icon: 'success',
+      timer: 100000,
+      showConfirmButton: false,
+    });
+
+    window.setTimeout(function () {
+      location.reload();
+    }, 3000)
+
+  }
+  else if (computerScore == 10 && userScore < 10) {
+    Swal.fire({
+      imageUrl: "/images/failure.jpg",
+      imageHeight: 100,
+      imageWidth: 100,
+      title: "sorry!",
+      text: "you have lost",
+      timer: 100000,
+      showConfirmButton: false,
+    });
+    window.setTimeout(function () {
+      location.reload();
+    }, 3000)
+  }
+
+}
