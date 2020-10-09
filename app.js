@@ -7,13 +7,10 @@ const result_p = document.querySelector(".result > p");
 const rock_div = document.getElementById("r");
 const paper_div = document.getElementById("p");
 const scissors_div = document.getElementById("s");
+var remaining_time = document.querySelector("#time");
 
 var user_span = document.getElementById("user");
-var userName_span = document.getElementById("userName").innerHTML;
-
-function changeName() {
-  user_span.innerHTML = userName_span.innerText;
-}
+var userName_span = document.getElementById("userName");
 
 
 function getCompChoice() {
@@ -30,7 +27,7 @@ function convertToWord(letter) {
 }
 
 function win(user, comp) {
-  const smallUWord = "user".fontsize(3).sup();
+  const smallUWord = userName_span.value.fontsize(3).sup();
   const smallCWord = "comp".fontsize(3).sup();
   const user_div = document.getElementById(user);
 
@@ -48,7 +45,7 @@ function win(user, comp) {
 }
 
 function lose(user, comp) {
-  const smallUWord = "user".fontsize(3).sup();
+  const smallUWord = userName_span.value.fontsize(3).sup();
   const smallCWord = "comp".fontsize(3).sup();
   const user_div = document.getElementById(user);
 
@@ -66,7 +63,7 @@ function lose(user, comp) {
 }
 
 function draw(user, comp) {
-  const smallUWord = "user".fontsize(3).sup();
+  const smallUWord = userName_span.value.fontsize(3).sup();
   const smallCWord = "comp".fontsize(3).sup();
   const user_div = document.getElementById(user);
 
@@ -117,10 +114,11 @@ function main() {
 main();
 
 function finalResult() {
+  remaining_time.innerHTML = timeleft;
   userScore_span.innerHTML = userScore;
   compScore_span.innerHTML = computerScore;
 
-  if (userScore == 10 && computerScore < 10) {
+  if (timeleft === '00:00' && userScore > computerScore) {
 
     Swal.fire({
       imageUrl: "/images/trophy.gif",
@@ -136,7 +134,7 @@ function finalResult() {
       showConfirmButton: false,
     }).then(() => location.reload());
 
-  } else if (computerScore == 10 && userScore < 10) {
+  } else if (timeleft == '00:00' && computerScore > userScore) {
 
     Swal.fire({
       imageUrl: "/images/sorry.gif",
@@ -167,4 +165,49 @@ var btn = document.getElementById("start");
 // When the user clicks on the button, open the modal
 btn.onclick = function () {
   modal.style.display = "block";
+}
+
+function startTimer(duration, display) {
+  var timer = duration, minutes, seconds;
+  setInterval(function () {
+    minutes = parseInt(timer / 60, 10);
+    seconds = parseInt(timer % 60, 10);
+
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+
+    display.textContent = minutes + ":" + seconds;
+
+    if (--timer < 0) {
+      timer = duration;
+    }
+  }, 1000);
+}
+
+function setTimer() {
+  var twoMinutes = 60 * 1,
+    display = document.querySelector('#time');
+  startTimer(twoMinutes, display);
+}
+
+window.onload = function () {
+  hideGameArea();
+};
+
+function startgame() {
+  modal.style.display = "none";
+  
+  showGameArea();
+  setTimer();
+  user_span.innerHTML = userName_span.value;
+}
+
+function hideGameArea() {
+  var x = document.getElementById("gamearea");
+  x.style.display = "none"
+}
+
+function showGameArea() {
+  var x = document.getElementById("gamearea");
+  x.style.display = "block";
 }

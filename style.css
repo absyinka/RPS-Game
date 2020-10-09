@@ -34,6 +34,30 @@ header>h1 {
     position: relative;
 }
 
+#start{
+    margin: auto;
+    font-size: 100px;
+    background-color: #E2584D;
+    border-radius: 20px solid black;
+    box-shadow: 7px 7px 7px 7px black;
+    position: relative;
+}
+
+.clock{
+    margin: 15px;
+    margin-left:1000px;
+    border: 3px solid red;
+    border-radius: 4px;
+    text-align: center;
+    width: 150px;
+    color: white;
+    background-color: #E2584D;
+    font-size: 30px;
+    padding: 15px 20px;
+    font-family: Asap, sans-serif;
+    position: absolute; 
+}
+
 .badge {
     background-color: #E2584D;
     color: white;
@@ -144,8 +168,34 @@ header>h1 {
 /* Modal Content/Box */
 .modal-content {
   background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
+  margin: 20% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
-  width: 50%; /* Could be more or less, depending on screen size */
+  width: 40%; /* Could be more or less, depending on screen size */
+}
+
+.myLabel {
+    display: block;
+    
+}
+
+.name {
+    padding: 15px 5px;
+    border: 2px solid skyblue;
+    border-radius: 3px;
+    font-size: larger;
+}
+
+#submit {
+    height: 55px;
+    font-size: larger;
+    padding: 5px 5px;
+    background-color: skyblue;
+    border: 2px solid rgb(3, 99, 138);
+    border-radius: 3px;
+}
+
+#submit:hover {
+    background-color: steelblue;
+    color: blue;
 }
