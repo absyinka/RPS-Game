@@ -13,8 +13,6 @@ var user_span = document.getElementById("user");
 var userName_span = document.getElementById("userName");
 // Get the modal
 var modal = document.getElementById("myModal");
-// Get the button that opens the modal
-var btn = document.getElementById("start");
 
 
 window.onload = () => hideGameArea();
@@ -189,7 +187,7 @@ function finalResult() {
 
 
 // When the user clicks on the button, open the modal
-btn.onclick = function () {
+start_btn.onclick = function () {
   modal.style.display = "block";
 }
 
