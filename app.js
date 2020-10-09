@@ -36,7 +36,12 @@ function setTimer() {
 }
 
 function startgame() {
-  user_span.innerHTML = userName_span.value;
+  if (userName_span.value === "") {
+    user_span;
+  } else {
+    user_span.innerHTML = userName_span.value;
+  }
+  
   showGameArea();
   setTimer();
   modal.style.display = "none";
