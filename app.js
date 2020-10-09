@@ -41,7 +41,7 @@ function startgame() {
   } else {
     user_span.innerHTML = userName_span.value;
   }
-  
+
   showGameArea();
   setTimer();
   modal.style.display = "none";
@@ -121,6 +121,11 @@ function draw(user, comp) {
   const smallUWord = userName_span.value.fontsize(3).sup();
   const smallCWord = "comp".fontsize(3).sup();
   const user_div = document.getElementById(user);
+  
+  if (remaining_time === "Finished") {
+    userScore;
+    computerScore;
+  }
 
   result_p.innerHTML = `${convertToWord(
     user
