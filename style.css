@@ -145,3 +145,65 @@ header>h1 {
     box-shadow: 0 0 10px #F1F9F9;
     border-radius: 50%;
 }
+
+/* Modal Button */
+.startBtn {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.start {
+    width: 100px;
+    font-weight: 600;
+    font-size: larger;
+    padding: 5px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 20% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 40%; /* Could be more or less, depending on screen size */
+}
+
+.myLabel {
+    display: block;
+    
+}
+
+.name {
+    padding: 15px 5px;
+    border: 2px solid skyblue;
+    border-radius: 3px;
+    font-size: larger;
+}
+
+#submit {
+    height: 55px;
+    font-size: larger;
+    padding: 5px 5px;
+    background-color: skyblue;
+    border: 2px solid rgb(3, 99, 138);
+    border-radius: 3px;
+}
+
+#submit:hover {
+    background-color: steelblue;
+    color: blue;
+}

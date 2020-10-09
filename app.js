@@ -9,6 +9,9 @@ const paper_div = document.getElementById("p");
 const scissors_div = document.getElementById("s");
 const remaining_time = document.getElementById("time");
 const start_btn = document.getElementById("start");
+var user_span = document.getElementById("user");
+var userName_span = document.getElementById("userName");
+
 
 window.onload = () => hideGameArea();
 
@@ -26,8 +29,12 @@ function setTimer() {
 }
 
 function startgame() {
+  user_span.innerHTML = userName_span.value;
   showGameArea();
   setTimer();
+  
+  
+  modal.style.display = "none";
   start_btn.style.display = "none";
 }
 
@@ -55,7 +62,7 @@ function convertToWord(letter) {
 }
 
 function win(user, comp) {
-  const smallUWord = "user".fontsize(3).sup();
+  const smallUWord = userName_span.value.fontsize(3).sup();
   const smallCWord = "comp".fontsize(3).sup();
   const user_div = document.getElementById(user);
 
@@ -73,7 +80,7 @@ function win(user, comp) {
 }
 
 function lose(user, comp) {
-  const smallUWord = "user".fontsize(3).sup();
+  const smallUWord = userName_span.value.fontsize(3).sup();
   const smallCWord = "comp".fontsize(3).sup();
   const user_div = document.getElementById(user);
 
@@ -91,7 +98,7 @@ function lose(user, comp) {
 }
 
 function draw(user, comp) {
-  const smallUWord = "user".fontsize(3).sup();
+  const smallUWord = userName_span.value.fontsize(3).sup();
   const smallCWord = "comp".fontsize(3).sup();
   const user_div = document.getElementById(user);
 
@@ -177,3 +184,19 @@ function finalResult() {
     }).then(() => location.reload());
   }
 }
+
+
+
+
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("start");
+
+// When the user clicks on the button, open the modal
+btn.onclick = function () {
+  modal.style.display = "block";
+}
+
+
