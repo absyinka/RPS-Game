@@ -34,28 +34,38 @@ header>h1 {
     position: relative;
 }
 
-#start{
-    margin: auto;
-    font-size: 100px;
-    background-color: #E2584D;
-    border-radius: 20px solid black;
-    box-shadow: 7px 7px 7px 7px black;
-    position: relative;
+.startDivBtn {
+    margin: 50px auto;
+    text-align: center;
 }
 
-.clock{
-    margin: 15px;
-    margin-left:1000px;
+#start {
+    background-color: #E2584D;
+    border-radius: 10px;
+    box-shadow: 3px 3px 4px white;
+    color: white;
+    font-size: 100px;
+    padding: 30px;
+    cursor: pointer;
+}
+
+#start:hover {
+    background-color: white;
+    color: #E2584D;
+}
+
+.clock {
+    margin-left: 1000px;
     border: 3px solid red;
     border-radius: 4px;
     text-align: center;
-    width: 150px;
+    width: 300px;
     color: white;
     background-color: #E2584D;
     font-size: 30px;
-    padding: 15px 20px;
+    padding: 20px;
     font-family: Asap, sans-serif;
-    position: absolute; 
+    position: absolute;
 }
 
 .badge {
@@ -135,8 +145,6 @@ header>h1 {
     box-shadow: 0 0 10px #F1F9F9;
     border-radius: 50%;
 }
-
-
 
 /* Modal Button */
 .startBtn {
