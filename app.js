@@ -17,6 +17,11 @@ const modal = document.getElementById("myModal");
 
 window.onload = () => hideGameArea();
 
+// When the user clicks on the button, open the modal
+start_btn.onclick = function () {
+  modal.style.display = "block";
+}
+
 function setTimer() {
   var timeleft = 60;
   var downloadTimer = setInterval(function () {
@@ -194,11 +199,3 @@ function finalResult() {
     }).then(() => location.reload());
   }
 }
-
-
-// When the user clicks on the button, open the modal
-start_btn.onclick = function () {
-  modal.style.display = "block";
-}
-
-
