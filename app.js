@@ -23,7 +23,7 @@ start_btn.onclick = function () {
 }
 
 function setTimer() {
-  var timeleft = 60;
+  var timeleft = 10;
   var downloadTimer = setInterval(function () {
     if (timeleft <= 0) {
       clearInterval(downloadTimer);
@@ -74,16 +74,16 @@ function win(user, comp) {
   const smallCWord = "comp".fontsize(3).sup();
   const user_div = document.getElementById(user);
 
-  if (remaining_time === "Finished") {
-      userScore;
-      userScore_span.innerHTML = userScore;
-      compScore_span.innerHTML = computerScore;
+  if (remaining_time.innerHTML === "Finished") {
+    userScore;
+    userScore_span.innerHTML = userScore;
+    compScore_span.innerHTML = computerScore;
   } else {
     userScore++;
     userScore_span.innerHTML = userScore;
     compScore_span.innerHTML = computerScore;
   }
-
+  
   result_p.innerHTML = `${convertToWord(
     user
   )}${smallUWord} beats ${convertToWord(comp)}${smallCWord}. You win!`;
@@ -91,17 +91,18 @@ function win(user, comp) {
   user_div.classList.add("success-glow");
 
   setTimeout(() => user_div.classList.remove("success-glow"), 300);
+  
 }
 
 function lose(user, comp) {
   const smallUWord = userName_span.value.fontsize(3).sup();
   const smallCWord = "comp".fontsize(3).sup();
   const user_div = document.getElementById(user);
-
-  if (remaining_time === "Finished") {
-      computerScore;
-      userScore_span.innerHTML = userScore;
-      compScore_span.innerHTML = computerScore;
+  
+  if (remaining_time.innerHTML === "Finished") {
+    computerScore;
+    userScore_span.innerHTML = userScore;
+    compScore_span.innerHTML = computerScore;
   } else {
     computerScore++;
     userScore_span.innerHTML = userScore;
@@ -114,18 +115,13 @@ function lose(user, comp) {
 
   user_div.classList.add("danger-glow");
 
-  setTimeout(() => user_div.classList.remove("danger-glow"), 300);
+  setTimeout(() => user_div.classList.remove("danger-glow"), 300);  
 }
 
 function draw(user, comp) {
   const smallUWord = userName_span.value.fontsize(3).sup();
   const smallCWord = "comp".fontsize(3).sup();
   const user_div = document.getElementById(user);
-  
-  if (remaining_time === "Finished") {
-    userScore;
-    computerScore;
-  }
 
   result_p.innerHTML = `${convertToWord(
     user
@@ -160,6 +156,9 @@ function game(userChoice) {
   finalResult();
 }
 
+main();
+
+
 function main() {
   rock_div.addEventListener("click", () => game("r"));
 
@@ -167,8 +166,6 @@ function main() {
 
   scissors_div.addEventListener("click", () => game("s"));
 }
-
-main();
 
 function finalResult() {
   let timeleft = remaining_time.innerHTML;
