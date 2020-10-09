@@ -8,11 +8,11 @@ const rock_div = document.getElementById("r");
 const paper_div = document.getElementById("p");
 const scissors_div = document.getElementById("s");
 const remaining_time = document.getElementById("time");
+const gamearea_div = document.getElementById("gamearea");
 const start_btn = document.getElementById("start");
-var user_span = document.getElementById("user");
-var userName_span = document.getElementById("userName");
-// Get the modal
-var modal = document.getElementById("myModal");
+const user_span = document.getElementById("user");
+const userName_span = document.getElementById("userName");
+const modal = document.getElementById("myModal");
 
 
 window.onload = () => hideGameArea();
@@ -39,13 +39,11 @@ function startgame() {
 }
 
 function hideGameArea() {
-  var x = document.getElementById("gamearea");
-  x.style.display = "none";
+  gamearea_div.style.display = "none";
 }
 
 function showGameArea() {
-  var x = document.getElementById("gamearea");
-  x.style.display = "block";
+  gamearea_div.style.display = "block";
 }
 
 function getCompChoice() {
@@ -66,9 +64,15 @@ function win(user, comp) {
   const smallCWord = "comp".fontsize(3).sup();
   const user_div = document.getElementById(user);
 
-  userScore++;
-  userScore_span.innerHTML = userScore;
-  compScore_span.innerHTML = computerScore;
+  if (remaining_time === "Finished") {
+      userScore;
+      userScore_span.innerHTML = userScore;
+      compScore_span.innerHTML = computerScore;
+  } else {
+    userScore++;
+    userScore_span.innerHTML = userScore;
+    compScore_span.innerHTML = computerScore;
+  }
 
   result_p.innerHTML = `${convertToWord(
     user
@@ -84,9 +88,15 @@ function lose(user, comp) {
   const smallCWord = "comp".fontsize(3).sup();
   const user_div = document.getElementById(user);
 
-  computerScore++;
-  userScore_span.innerHTML = userScore;
-  compScore_span.innerHTML = computerScore;
+  if (remaining_time === "Finished") {
+      computerScore;
+      userScore_span.innerHTML = userScore;
+      compScore_span.innerHTML = computerScore;
+  } else {
+    computerScore++;
+    userScore_span.innerHTML = userScore;
+    compScore_span.innerHTML = computerScore;
+  }
 
   result_p.innerHTML = `${convertToWord(
     user
