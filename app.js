@@ -11,9 +11,10 @@ const remaining_time = document.getElementById("time");
 const gamearea_div = document.getElementById("gamearea");
 const start_btn = document.getElementById("start");
 const user_span = document.getElementById("user");
-const userName_span = document.getElementById("userName");
+const username = document.getElementById("userName");
+const computer_name = document.getElementById("comp");
 const modal = document.getElementById("myModal");
-
+let smallUWord, smallCWord;
 
 window.onload = () => hideGameArea();
 
@@ -23,7 +24,7 @@ start_btn.onclick = function () {
 }
 
 function setTimer() {
-  var timeleft = 10;
+  var timeleft = 30;
   var downloadTimer = setInterval(function () {
     if (timeleft <= 0) {
       clearInterval(downloadTimer);
@@ -36,11 +37,11 @@ function setTimer() {
 }
 
 function startgame() {
-  if (userName_span.value === "") {
-    user_span;
-  } else {
-    user_span.innerHTML = userName_span.value;
-  }
+  username.value === "" ? user_span : user_span.innerText = username.value;
+  let fontSize = "font-size:16px";
+
+  smallUWord = `<sup style="${fontSize}">${user_span.innerText}</sup>`;
+  smallCWord = `<sup style=${fontSize}>${computer_name.innerText}</sup>`;
 
   showGameArea();
   setTimer();
@@ -70,8 +71,6 @@ function convertToWord(letter) {
 }
 
 function win(user, comp) {
-  const smallUWord = userName_span.value.fontsize(3).sup();
-  const smallCWord = "comp".fontsize(3).sup();
   const user_div = document.getElementById(user);
 
   if (remaining_time.innerHTML === "Finished") {
@@ -83,22 +82,20 @@ function win(user, comp) {
     userScore_span.innerHTML = userScore;
     compScore_span.innerHTML = computerScore;
   }
-  
-  result_p.innerHTML = `${convertToWord(
-    user
-  )}${smallUWord} beats ${convertToWord(comp)}${smallCWord}. You win!`;
 
+  result_p.innerHTML = `${convertToWord(user)}${smallUWord} beats ${convertToWord(comp)}${smallCWord}. You win!`;
   user_div.classList.add("success-glow");
 
   setTimeout(() => user_div.classList.remove("success-glow"), 300);
-  
+
 }
 
 function lose(user, comp) {
-  const smallUWord = userName_span.value.fontsize(3).sup();
-  const smallCWord = "comp".fontsize(3).sup();
+
   const user_div = document.getElementById(user);
-  
+
+  console.log("SmallUWord: ", smallUWord);
+
   if (remaining_time.innerHTML === "Finished") {
     computerScore;
     userScore_span.innerHTML = userScore;
@@ -109,31 +106,26 @@ function lose(user, comp) {
     compScore_span.innerHTML = computerScore;
   }
 
-  result_p.innerHTML = `${convertToWord(
-    user
-  )}${smallUWord} loses to ${convertToWord(comp)}${smallCWord}. You lost!`;
-
+  result_p.innerHTML = `${convertToWord(user)}${smallUWord} loses to ${convertToWord(comp)}${smallCWord}. You lost!`;
   user_div.classList.add("danger-glow");
 
-  setTimeout(() => user_div.classList.remove("danger-glow"), 300);  
+  setTimeout(() => user_div.classList.remove("danger-glow"), 300);
 }
 
 function draw(user, comp) {
-  const smallUWord = userName_span.value.fontsize(3).sup();
-  const smallCWord = "comp".fontsize(3).sup();
   const user_div = document.getElementById(user);
 
-  result_p.innerHTML = `${convertToWord(
-    user
-  )}${smallUWord} equals ${convertToWord(comp)}${smallCWord}. It's a draw!`;
-
+  result_p.innerHTML = `${convertToWord(user)}${smallUWord} equals ${convertToWord(comp)}${smallCWord}. It's a draw!`;
   user_div.classList.add("draw-glow");
 
   setTimeout(() => user_div.classList.remove("draw-glow"), 300);
 }
 
+
 function game(userChoice) {
+
   const compChoice = getCompChoice();
+
   switch (userChoice + compChoice) {
     case "rs":
     case "pr":
@@ -153,6 +145,7 @@ function game(userChoice) {
       draw(userChoice, compChoice);
       break;
   }
+
   finalResult();
 }
 
